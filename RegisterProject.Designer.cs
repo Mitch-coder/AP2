@@ -51,16 +51,16 @@
             this.rbLateSent = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
             this.gvStudentProjects = new System.Windows.Forms.DataGridView();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.idStudent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.names = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNames = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sentDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.limitDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.daySent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dayLimit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.projectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvStudentProjects)).BeginInit();
@@ -107,6 +107,7 @@
             this.btnCreate.TabIndex = 2;
             this.btnCreate.Text = "Ingresar";
             this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
             // 
             // btnUpdate
             // 
@@ -119,6 +120,7 @@
             this.btnUpdate.TabIndex = 3;
             this.btnUpdate.Text = "Actualizar";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -131,6 +133,7 @@
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Eliminar";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // label1
             // 
@@ -149,6 +152,7 @@
             this.txtIdStudent.Name = "txtIdStudent";
             this.txtIdStudent.Size = new System.Drawing.Size(175, 22);
             this.txtIdStudent.TabIndex = 6;
+            this.txtIdStudent.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtIdStudent_KeyUp);
             // 
             // label2
             // 
@@ -270,6 +274,7 @@
             this.rbAll.TabStop = true;
             this.rbAll.Text = "Todos";
             this.rbAll.UseVisualStyleBackColor = true;
+            this.rbAll.CheckedChanged += new System.EventHandler(this.RbAll_CheckedChanged);
             // 
             // rbLateSent
             // 
@@ -283,6 +288,7 @@
             this.rbLateSent.TabStop = true;
             this.rbLateSent.Text = "Entrega tardia";
             this.rbLateSent.UseVisualStyleBackColor = true;
+            this.rbLateSent.CheckedChanged += new System.EventHandler(this.RbLateSent_CheckedChanged);
             // 
             // label8
             // 
@@ -302,10 +308,10 @@
             this.gvStudentProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvStudentProjects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idStudent,
-            this.name,
+            this.names,
             this.lastNames,
-            this.sentDay,
-            this.limitDay,
+            this.daySent,
+            this.dayLimit,
             this.state,
             this.projectName,
             this.grade});
@@ -313,56 +319,8 @@
             this.gvStudentProjects.Name = "gvStudentProjects";
             this.gvStudentProjects.ReadOnly = true;
             this.gvStudentProjects.RowTemplate.Height = 24;
-            this.gvStudentProjects.Size = new System.Drawing.Size(1035, 211);
+            this.gvStudentProjects.Size = new System.Drawing.Size(1051, 210);
             this.gvStudentProjects.TabIndex = 23;
-            // 
-            // idStudent
-            // 
-            this.idStudent.HeaderText = "Carnet";
-            this.idStudent.Name = "idStudent";
-            this.idStudent.ReadOnly = true;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Nombres";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // lastNames
-            // 
-            this.lastNames.HeaderText = "Apellidos";
-            this.lastNames.Name = "lastNames";
-            this.lastNames.ReadOnly = true;
-            // 
-            // sentDay
-            // 
-            this.sentDay.HeaderText = "Fecha de envio";
-            this.sentDay.Name = "sentDay";
-            this.sentDay.ReadOnly = true;
-            // 
-            // limitDay
-            // 
-            this.limitDay.HeaderText = "Fecha limite";
-            this.limitDay.Name = "limitDay";
-            this.limitDay.ReadOnly = true;
-            // 
-            // state
-            // 
-            this.state.HeaderText = "Estado de entrega";
-            this.state.Name = "state";
-            this.state.ReadOnly = true;
-            // 
-            // projectName
-            // 
-            this.projectName.HeaderText = "Nombre del proyecto";
-            this.projectName.Name = "projectName";
-            this.projectName.ReadOnly = true;
-            // 
-            // grade
-            // 
-            this.grade.HeaderText = "Calificacion";
-            this.grade.Name = "grade";
-            this.grade.ReadOnly = true;
             // 
             // label9
             // 
@@ -385,6 +343,54 @@
             this.label10.Size = new System.Drawing.Size(189, 25);
             this.label10.TabIndex = 25;
             this.label10.Text = "Datos del estudiante";
+            // 
+            // idStudent
+            // 
+            this.idStudent.HeaderText = "Carnet";
+            this.idStudent.Name = "idStudent";
+            this.idStudent.ReadOnly = true;
+            // 
+            // names
+            // 
+            this.names.HeaderText = "Nombres";
+            this.names.Name = "names";
+            this.names.ReadOnly = true;
+            // 
+            // lastNames
+            // 
+            this.lastNames.HeaderText = "Apellidos";
+            this.lastNames.Name = "lastNames";
+            this.lastNames.ReadOnly = true;
+            // 
+            // daySent
+            // 
+            this.daySent.HeaderText = "Fecha de envio";
+            this.daySent.Name = "daySent";
+            this.daySent.ReadOnly = true;
+            // 
+            // dayLimit
+            // 
+            this.dayLimit.HeaderText = "Fecha limite";
+            this.dayLimit.Name = "dayLimit";
+            this.dayLimit.ReadOnly = true;
+            // 
+            // state
+            // 
+            this.state.HeaderText = "Estado de entrega";
+            this.state.Name = "state";
+            this.state.ReadOnly = true;
+            // 
+            // projectName
+            // 
+            this.projectName.HeaderText = "Nombre del proyecto";
+            this.projectName.Name = "projectName";
+            this.projectName.ReadOnly = true;
+            // 
+            // grade
+            // 
+            this.grade.HeaderText = "Calificacion";
+            this.grade.Name = "grade";
+            this.grade.ReadOnly = true;
             // 
             // RegisterProject
             // 
@@ -453,15 +459,15 @@
         private System.Windows.Forms.RadioButton rbLateSent;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView gvStudentProjects;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridViewTextBoxColumn idStudent;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn names;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNames;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sentDay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn limitDay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn daySent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dayLimit;
         private System.Windows.Forms.DataGridViewTextBoxColumn state;
         private System.Windows.Forms.DataGridViewTextBoxColumn projectName;
         private System.Windows.Forms.DataGridViewTextBoxColumn grade;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
     }
 }

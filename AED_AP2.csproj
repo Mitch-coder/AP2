@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuxiliarMethods.cs" />
     <Compile Include="Buttoms.cs" />
     <Compile Include="Developers.cs">
       <SubType>Form</SubType>
@@ -63,6 +64,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Projects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterDebts.cs">
       <SubType>Form</SubType>
@@ -76,6 +78,7 @@
     <Compile Include="RegisterProject.Designer.cs">
       <DependentUpon>RegisterProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Student.cs" />
     <EmbeddedResource Include="Developers.resx">
       <DependentUpon>Developers.cs</DependentUpon>
     </EmbeddedResource>
