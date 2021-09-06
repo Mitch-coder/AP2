@@ -66,6 +66,10 @@ namespace AED_AP2
             Buttoms.Disable(btnDevelopers);
             Buttoms.Disable(btnRegisterProjects);
         }
+        private void IconButton1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
         #endregion
         #region CallFuntcionSizableForm
         private void Panel1_MouseDown(object sender, MouseEventArgs e)
@@ -74,6 +78,6 @@ namespace AED_AP2
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
-        #endregion
+        #endregion 
     }
 }
