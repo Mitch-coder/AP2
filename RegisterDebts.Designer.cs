@@ -33,8 +33,6 @@
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNames = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
@@ -44,12 +42,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtAmountDebt = new System.Windows.Forms.TextBox();
-            this.txtStateDebt = new System.Windows.Forms.TextBox();
             this.txtIdDebt = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.gcClients = new System.Windows.Forms.DataGridView();
+            this.gvClients = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.names = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNames = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,9 +59,10 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.cbStateDebt = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcClients)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvClients)).BeginInit();
             this.SuspendLayout();
             // 
             // iconPictureBox1
@@ -109,6 +107,7 @@
             this.btnCreate.TabIndex = 2;
             this.btnCreate.Text = "Ingresar";
             this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
             // 
             // btnUpdate
             // 
@@ -121,6 +120,7 @@
             this.btnUpdate.TabIndex = 3;
             this.btnUpdate.Text = "Actualizar";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -133,24 +133,7 @@
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Eliminar";
             this.btnDelete.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(232, 158);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 25);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Cedula";
-            // 
-            // txtId
-            // 
-            this.txtId.Location = new System.Drawing.Point(352, 161);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(208, 22);
-            this.txtId.TabIndex = 6;
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // label2
             // 
@@ -226,31 +209,25 @@
             // 
             // txtAmountDebt
             // 
-            this.txtAmountDebt.Location = new System.Drawing.Point(872, 259);
+            this.txtAmountDebt.Location = new System.Drawing.Point(872, 172);
             this.txtAmountDebt.Name = "txtAmountDebt";
             this.txtAmountDebt.Size = new System.Drawing.Size(208, 22);
             this.txtAmountDebt.TabIndex = 15;
             // 
-            // txtStateDebt
-            // 
-            this.txtStateDebt.Location = new System.Drawing.Point(872, 211);
-            this.txtStateDebt.Name = "txtStateDebt";
-            this.txtStateDebt.Size = new System.Drawing.Size(208, 22);
-            this.txtStateDebt.TabIndex = 16;
-            // 
             // txtIdDebt
             // 
-            this.txtIdDebt.Location = new System.Drawing.Point(872, 164);
+            this.txtIdDebt.Location = new System.Drawing.Point(352, 158);
             this.txtIdDebt.Name = "txtIdDebt";
             this.txtIdDebt.Size = new System.Drawing.Size(208, 22);
             this.txtIdDebt.TabIndex = 17;
+            this.txtIdDebt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtIdDebt_KeyUp);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label6.ForeColor = System.Drawing.SystemColors.Control;
-            this.label6.Location = new System.Drawing.Point(760, 161);
+            this.label6.Location = new System.Drawing.Point(232, 164);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(28, 25);
             this.label6.TabIndex = 18;
@@ -261,7 +238,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label7.ForeColor = System.Drawing.SystemColors.Control;
-            this.label7.Location = new System.Drawing.Point(760, 255);
+            this.label7.Location = new System.Drawing.Point(766, 172);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(67, 25);
             this.label7.TabIndex = 19;
@@ -272,30 +249,30 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label8.ForeColor = System.Drawing.SystemColors.Control;
-            this.label8.Location = new System.Drawing.Point(760, 211);
+            this.label8.Location = new System.Drawing.Point(766, 225);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(73, 25);
             this.label8.TabIndex = 20;
             this.label8.Text = "Estado";
             // 
-            // gcClients
+            // gvClients
             // 
-            this.gcClients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gcClients.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.gcClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gcClients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gvClients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gvClients.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.gvClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvClients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.names,
             this.lastNames,
             this.adrress,
             this.amountDebt,
             this.state});
-            this.gcClients.Location = new System.Drawing.Point(197, 513);
-            this.gcClients.Name = "gcClients";
-            this.gcClients.ReadOnly = true;
-            this.gcClients.RowTemplate.Height = 24;
-            this.gcClients.Size = new System.Drawing.Size(1034, 246);
-            this.gcClients.TabIndex = 21;
+            this.gvClients.Location = new System.Drawing.Point(197, 513);
+            this.gvClients.Name = "gvClients";
+            this.gvClients.ReadOnly = true;
+            this.gvClients.RowTemplate.Height = 24;
+            this.gvClients.Size = new System.Drawing.Size(1034, 246);
+            this.gvClients.TabIndex = 21;
             // 
             // id
             // 
@@ -345,6 +322,7 @@
             this.rbAll.TabStop = true;
             this.rbAll.Text = "Todos";
             this.rbAll.UseVisualStyleBackColor = true;
+            this.rbAll.CheckedChanged += new System.EventHandler(this.RbAll_CheckedChanged);
             // 
             // rbWithoutDebt
             // 
@@ -358,6 +336,7 @@
             this.rbWithoutDebt.TabStop = true;
             this.rbWithoutDebt.Text = "Sin deudas";
             this.rbWithoutDebt.UseVisualStyleBackColor = true;
+            this.rbWithoutDebt.CheckedChanged += new System.EventHandler(this.RbWithoutDebt_CheckedChanged);
             // 
             // rbWithDebt
             // 
@@ -371,6 +350,7 @@
             this.rbWithDebt.TabStop = true;
             this.rbWithDebt.Text = "Con deudas";
             this.rbWithDebt.UseVisualStyleBackColor = true;
+            this.rbWithDebt.CheckedChanged += new System.EventHandler(this.RbWithDebt_CheckedChanged);
             // 
             // label9
             // 
@@ -405,24 +385,32 @@
             this.label11.TabIndex = 27;
             this.label11.Text = "Datos del Cliente";
             // 
+            // cbStateDebt
+            // 
+            this.cbStateDebt.FormattingEnabled = true;
+            this.cbStateDebt.Location = new System.Drawing.Point(872, 225);
+            this.cbStateDebt.Name = "cbStateDebt";
+            this.cbStateDebt.Size = new System.Drawing.Size(208, 24);
+            this.cbStateDebt.TabIndex = 28;
+            // 
             // RegisterDebts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.ClientSize = new System.Drawing.Size(1531, 762);
+            this.Controls.Add(this.cbStateDebt);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.rbWithDebt);
             this.Controls.Add(this.rbWithoutDebt);
             this.Controls.Add(this.rbAll);
-            this.Controls.Add(this.gcClients);
+            this.Controls.Add(this.gvClients);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtIdDebt);
-            this.Controls.Add(this.txtStateDebt);
             this.Controls.Add(this.txtAmountDebt);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -432,8 +420,6 @@
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.txtNames);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtId);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnCreate);
@@ -442,9 +428,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RegisterDebts";
             this.Text = "RegisterDebts";
+            this.Load += new System.EventHandler(this.RegisterDebts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcClients)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvClients)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -457,8 +444,6 @@
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNames;
         private System.Windows.Forms.TextBox txtPhone;
@@ -468,12 +453,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtAmountDebt;
-        private System.Windows.Forms.TextBox txtStateDebt;
         private System.Windows.Forms.TextBox txtIdDebt;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridView gcClients;
+        private System.Windows.Forms.DataGridView gvClients;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn names;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNames;
@@ -486,5 +470,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cbStateDebt;
     }
 }

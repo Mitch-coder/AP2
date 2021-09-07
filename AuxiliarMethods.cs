@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace AED_AP2
 {
     static class AuxiliarMethods
-    {
+    {//una clase estaica es la cual no se necesita instanciar a un objeto para ocupar sus metodos 
         public static void FillDataSource(DataGridView gvStudentProjects, Projects[] dataProject,int position,string message)
         {
             try
@@ -53,6 +53,58 @@ namespace AED_AP2
                  
               } 
            }
+        }
+        public static void FillDataSource(DataGridView gvClients,Debt[] dataDebts)
+        {
+            gvClients.Rows.Clear();
+            for (int i = 0; i < dataDebts.Length; i++)
+            {
+                gvClients.Rows.Add();
+                gvClients.Rows[i].Cells[0].Value = dataDebts[i].id;
+                gvClients.Rows[i].Cells[1].Value = dataDebts[i].names;
+                gvClients.Rows[i].Cells[2].Value = dataDebts[i].lastNames;
+                gvClients.Rows[i].Cells[3].Value = dataDebts[i].address;
+                gvClients.Rows[i].Cells[4].Value = dataDebts[i].amount;
+                if (dataDebts[i].isPay == true)
+                    gvClients.Rows[i].Cells[5].Value = "Pagada";
+                else
+                    gvClients.Rows[i].Cells[5].Value = "No Pagada";
+               
+            }
+        }
+        public static void isPayDataSource(DataGridView gvClients, Debt[] dataDebts)
+        {
+            gvClients.Rows.Clear();
+            for (int i = 0; i < dataDebts.Length; i++)
+            {
+                if (dataDebts[i].isPay == true)
+                {
+                    gvClients.Rows.Add();
+                    gvClients.Rows[i].Cells[0].Value = dataDebts[i].id;
+                    gvClients.Rows[i].Cells[1].Value = dataDebts[i].names;
+                    gvClients.Rows[i].Cells[2].Value = dataDebts[i].lastNames;
+                    gvClients.Rows[i].Cells[3].Value = dataDebts[i].address;
+                    gvClients.Rows[i].Cells[4].Value = dataDebts[i].amount;
+                    gvClients.Rows[i].Cells[5].Value = "Pagada";
+                }
+            }
+        }
+        public static void isNotPayDataSource(DataGridView gvClients, Debt[] dataDebts)
+        {
+            gvClients.Rows.Clear();
+            for (int i = 0; i < dataDebts.Length; i++)
+            {
+                if (dataDebts[i].isPay == false)
+                {
+                    gvClients.Rows.Add();
+                    gvClients.Rows[i].Cells[0].Value = dataDebts[i].id;
+                    gvClients.Rows[i].Cells[1].Value = dataDebts[i].names;
+                    gvClients.Rows[i].Cells[2].Value = dataDebts[i].lastNames;
+                    gvClients.Rows[i].Cells[3].Value = dataDebts[i].address;
+                    gvClients.Rows[i].Cells[4].Value = dataDebts[i].amount;
+                    gvClients.Rows[i].Cells[5].Value = "NO Pagada";
+                }
+            }
         }
     }
     

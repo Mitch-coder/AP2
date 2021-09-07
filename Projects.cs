@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace AED_AP2
 {
+    //Heredamos de la otra clase estudiante
     class Projects:Student
     {
         public string projectName { get; set; }

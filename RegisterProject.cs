@@ -12,6 +12,7 @@ namespace AED_AP2
 {
     public partial class RegisterProject : Form
     {
+
         private Projects[] dataProject;
         int position = 0;
         public RegisterProject()
@@ -31,27 +32,24 @@ namespace AED_AP2
                 //Si los datos son correctos procedemos a guardar y aumentamos el arreglo de la clase
                 Array.Resize(ref dataProject, position + 1);
                 getDataProject(position);
+                InsertByDateOrder(dataProject);
                 position++;
                 //Mandamos a mostrar el estudiante ingresado
                 AuxiliarMethods.FillDataSource(gvStudentProjects, dataProject, position, "HA ocurrido una falla");
                 //Mandamos a limpiar los textBox  
                 clearTextBoxes();
-              
-                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
             try
             {
                 //Se manda a validar los datos ingresados
                 validateDataProject();
-               
                 getDataProject(getIndex());
 
                 //Mandamos a limpiar los textBox  
@@ -65,7 +63,6 @@ namespace AED_AP2
             }
 
         }
-
         private void BtnDelete_Click(object sender, EventArgs e)
         {
             try
@@ -91,7 +88,6 @@ namespace AED_AP2
             AuxiliarMethods.FillDataSource(gvStudentProjects, dataProject,position,"No hay registro");
              
         }
-
         private void RbLateSent_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -147,7 +143,8 @@ namespace AED_AP2
 
             //Que los datos sean del tipo correcto
             if (!DateTime.TryParse(txtDaySent.Text, out DateTime exi)|| !DateTime.TryParse(txtDayLimit.Text, out DateTime exi2))
-                throw new Exception("Introducir una fecha en formato valido");
+                throw new Exception("Introducir una fecha en formato valido mes/dia/ano");
+            // prguntamos sila nota es correcta
             if (!int.TryParse(txtGrade.Text, out int exi3))
                 throw new Exception("El tipo de dato en calificaion no es correcto");
         }
@@ -176,43 +173,6 @@ namespace AED_AP2
                 daySent = DateTime.Parse(txtDaySent.Text),
                 lateSent = DateTime.Parse(txtDayLimit.Text) < DateTime.Parse(txtDaySent.Text)
             };
-            /* if (position>0)
-             {
-                 if (index < 0)
-                 {
-                     index = index * -1;
-                     for (int i = index; i >= index + 1; i--)
-                     {
-                         dataProject[i] = dataProject[i - 1];
-                     }
-                     dataProject[index] = new Projects()
-                     {
-                         idStudent = txtIdStudent.Text,
-                         names = txtNames.Text,
-                         lastNames = txtLastNames.Text,
-                         projectName = txtProjectName.Text,
-                         grade = int.Parse(txtGrade.Text),
-                         dayLimit = DateTime.Parse(txtDayLimit.Text),
-                         daySent = DateTime.Parse(txtDaySent.Text),
-                         lateSent = DateTime.Parse(txtDayLimit.Text) < DateTime.Parse(txtDaySent.Text)
-                     };
-                 }
-
-             }
-             else
-             {
-                 dataProject[position] = new Projects()
-                 {
-                     idStudent = txtIdStudent.Text,
-                     names = txtNames.Text,
-                     lastNames = txtLastNames.Text,
-                     projectName = txtProjectName.Text,
-                     grade = int.Parse(txtGrade.Text),
-                     dayLimit = DateTime.Parse(txtDayLimit.Text),
-                     daySent = DateTime.Parse(txtDaySent.Text),
-                     lateSent = DateTime.Parse(txtDayLimit.Text) < DateTime.Parse(txtDaySent.Text)
-                 };
-             }*/
         }
         public void clearTextBoxes()
         {
@@ -236,15 +196,24 @@ namespace AED_AP2
                     return i;
             return -1;
         }
-        /*public int getIndexByDay()
+        private void InsertByDateOrder(Projects[] dataProject)
         {
-            DateTime daySent = DateTime.Parse(txtDaySent.Text);
-
-            for (int i = 0; i < position; i++)
-                if (dataProject[i].daySent == daySent)
-                    return i;
-            return -1;
-        }*/ //lO INTENE==
+            Projects aux= new Projects();
+            int size = dataProject.Length;
+            for (int i = size - 1; i > 0; i--)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    if (dataProject[j].daySent > dataProject[j + 1].daySent)
+                    {
+                        aux= dataProject[j];
+                        dataProject[j] = dataProject[j + 1];
+                        dataProject[j + 1] = aux;
+                    }
+                }
+            }
+        }
+        
         #endregion
     }
 }

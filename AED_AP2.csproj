@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="AuxiliarMethods.cs" />
     <Compile Include="Buttoms.cs" />
+    <Compile Include="Debt.cs" />
     <Compile Include="Developers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +64,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Projects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
