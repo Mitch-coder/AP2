@@ -101,7 +101,7 @@ namespace AED_AP2
                 MessageBox.Show("No hay entregas tardes");
             }
         }
-        private void TxtIdStudent_KeyUp(object sender, KeyEventArgs e)
+        private void TxtIdStudent_KeyUp_1(object sender, KeyEventArgs e)
         {
             int index = getIndex();
             try
@@ -130,8 +130,6 @@ namespace AED_AP2
 
                 throw;
             }
-           
-           
         }
         #endregion
         #region Funtions
@@ -216,7 +214,7 @@ namespace AED_AP2
 
         #endregion
 
-        //
+        #region ValidateTextBox
         private void TxtNames_KeyPress(object sender, KeyPressEventArgs e)
         {
             ValidateTextBox.justLetters(e);
@@ -231,10 +229,8 @@ namespace AED_AP2
         {
             ValidateTextBox.justLetters(e);
         }
+        #endregion
 
-        private void TxtGrade_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ValidateTextBox.justNumbers(e);
-        }
+      
     }
 }

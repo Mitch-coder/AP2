@@ -247,11 +247,6 @@ namespace AED_AP2
             ValidateTextBox.justLetters(e);
         }
 
-        private void TxtPhone_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ValidateTextBox.justNumbers(e);
-        }
-
         private void TxtAmountDebt_KeyPress(object sender, KeyPressEventArgs e)
         {
             ValidateTextBox.allowDecimals(e);

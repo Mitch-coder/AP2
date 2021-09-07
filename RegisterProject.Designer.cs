@@ -34,18 +34,14 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtIdStudent = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtLastNames = new System.Windows.Forms.TextBox();
             this.txtNames = new System.Windows.Forms.TextBox();
-            this.txtDaySent = new System.Windows.Forms.TextBox();
-            this.txtDayLimit = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtProjectName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtGrade = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.rbAll = new System.Windows.Forms.RadioButton();
             this.rbLateSent = new System.Windows.Forms.RadioButton();
@@ -61,6 +57,10 @@
             this.grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.txtIdStudent = new System.Windows.Forms.MaskedTextBox();
+            this.txtDaySent = new System.Windows.Forms.MaskedTextBox();
+            this.txtDayLimit = new System.Windows.Forms.MaskedTextBox();
+            this.txtGrade = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvStudentProjects)).BeginInit();
@@ -146,14 +146,6 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Carnet";
             // 
-            // txtIdStudent
-            // 
-            this.txtIdStudent.Location = new System.Drawing.Point(288, 198);
-            this.txtIdStudent.Name = "txtIdStudent";
-            this.txtIdStudent.Size = new System.Drawing.Size(175, 22);
-            this.txtIdStudent.TabIndex = 6;
-            this.txtIdStudent.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtIdStudent_KeyUp);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -191,20 +183,6 @@
             this.txtNames.Size = new System.Drawing.Size(175, 22);
             this.txtNames.TabIndex = 11;
             this.txtNames.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNames_KeyPress);
-            // 
-            // txtDaySent
-            // 
-            this.txtDaySent.Location = new System.Drawing.Point(947, 255);
-            this.txtDaySent.Name = "txtDaySent";
-            this.txtDaySent.Size = new System.Drawing.Size(175, 22);
-            this.txtDaySent.TabIndex = 17;
-            // 
-            // txtDayLimit
-            // 
-            this.txtDayLimit.Location = new System.Drawing.Point(947, 302);
-            this.txtDayLimit.Name = "txtDayLimit";
-            this.txtDayLimit.Size = new System.Drawing.Size(175, 22);
-            this.txtDayLimit.TabIndex = 16;
             // 
             // label4
             // 
@@ -246,14 +224,6 @@
             this.label6.Size = new System.Drawing.Size(192, 25);
             this.label6.TabIndex = 12;
             this.label6.Text = "Nombre del proyecto";
-            // 
-            // txtGrade
-            // 
-            this.txtGrade.Location = new System.Drawing.Point(947, 348);
-            this.txtGrade.Name = "txtGrade";
-            this.txtGrade.Size = new System.Drawing.Size(175, 22);
-            this.txtGrade.TabIndex = 19;
-            this.txtGrade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtGrade_KeyPress);
             // 
             // label7
             // 
@@ -396,22 +366,56 @@
             this.label10.TabIndex = 25;
             this.label10.Text = "Datos del estudiante";
             // 
+            // txtIdStudent
+            // 
+            this.txtIdStudent.Location = new System.Drawing.Point(288, 200);
+            this.txtIdStudent.Mask = "0000-0000L";
+            this.txtIdStudent.Name = "txtIdStudent";
+            this.txtIdStudent.Size = new System.Drawing.Size(175, 22);
+            this.txtIdStudent.TabIndex = 26;
+            this.txtIdStudent.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtIdStudent_KeyUp_1);
+            // 
+            // txtDaySent
+            // 
+            this.txtDaySent.Location = new System.Drawing.Point(947, 256);
+            this.txtDaySent.Mask = "00/00/00";
+            this.txtDaySent.Name = "txtDaySent";
+            this.txtDaySent.Size = new System.Drawing.Size(175, 22);
+            this.txtDaySent.TabIndex = 27;
+            // 
+            // txtDayLimit
+            // 
+            this.txtDayLimit.Location = new System.Drawing.Point(947, 298);
+            this.txtDayLimit.Mask = "00/00/00";
+            this.txtDayLimit.Name = "txtDayLimit";
+            this.txtDayLimit.Size = new System.Drawing.Size(175, 22);
+            this.txtDayLimit.TabIndex = 28;
+            // 
+            // txtGrade
+            // 
+            this.txtGrade.Location = new System.Drawing.Point(947, 345);
+            this.txtGrade.Mask = "099";
+            this.txtGrade.Name = "txtGrade";
+            this.txtGrade.Size = new System.Drawing.Size(175, 22);
+            this.txtGrade.TabIndex = 29;
+            // 
             // RegisterProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.ClientSize = new System.Drawing.Size(1409, 776);
+            this.Controls.Add(this.txtGrade);
+            this.Controls.Add(this.txtDayLimit);
+            this.Controls.Add(this.txtDaySent);
+            this.Controls.Add(this.txtIdStudent);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.gvStudentProjects);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.rbLateSent);
             this.Controls.Add(this.rbAll);
-            this.Controls.Add(this.txtGrade);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtDaySent);
-            this.Controls.Add(this.txtDayLimit);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtProjectName);
@@ -420,7 +424,6 @@
             this.Controls.Add(this.txtLastNames);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtIdStudent);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
@@ -446,18 +449,14 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtIdStudent;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtLastNames;
         private System.Windows.Forms.TextBox txtNames;
-        private System.Windows.Forms.TextBox txtDaySent;
-        private System.Windows.Forms.TextBox txtDayLimit;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtProjectName;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtGrade;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RadioButton rbAll;
         private System.Windows.Forms.RadioButton rbLateSent;
@@ -473,5 +472,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn state;
         private System.Windows.Forms.DataGridViewTextBoxColumn projectName;
         private System.Windows.Forms.DataGridViewTextBoxColumn grade;
+        private System.Windows.Forms.MaskedTextBox txtIdStudent;
+        private System.Windows.Forms.MaskedTextBox txtDaySent;
+        private System.Windows.Forms.MaskedTextBox txtDayLimit;
+        private System.Windows.Forms.MaskedTextBox txtGrade;
     }
 }

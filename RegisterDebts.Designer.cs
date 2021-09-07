@@ -35,7 +35,6 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNames = new System.Windows.Forms.TextBox();
-            this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtAdress = new System.Windows.Forms.TextBox();
             this.txtLastNames = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -60,6 +59,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.cbStateDebt = new System.Windows.Forms.ComboBox();
+            this.txtPhone = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvClients)).BeginInit();
@@ -153,14 +153,6 @@
             this.txtNames.Size = new System.Drawing.Size(208, 22);
             this.txtNames.TabIndex = 8;
             this.txtNames.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNames_KeyPress);
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Location = new System.Drawing.Point(352, 362);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(208, 22);
-            this.txtPhone.TabIndex = 9;
-            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPhone_KeyPress);
             // 
             // txtAdress
             // 
@@ -399,12 +391,21 @@
             this.cbStateDebt.Size = new System.Drawing.Size(208, 24);
             this.cbStateDebt.TabIndex = 28;
             // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(352, 360);
+            this.txtPhone.Mask = "0000-0000";
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(208, 22);
+            this.txtPhone.TabIndex = 29;
+            // 
             // RegisterDebts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.ClientSize = new System.Drawing.Size(1531, 762);
+            this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.cbStateDebt);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -423,7 +424,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtLastNames);
             this.Controls.Add(this.txtAdress);
-            this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.txtNames);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnDelete);
@@ -452,7 +452,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNames;
-        private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.TextBox txtAdress;
         private System.Windows.Forms.TextBox txtLastNames;
         private System.Windows.Forms.Label label3;
@@ -477,5 +476,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cbStateDebt;
+        private System.Windows.Forms.MaskedTextBox txtPhone;
     }
 }
