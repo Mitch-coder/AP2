@@ -102,7 +102,7 @@ namespace AED_AP2
                     gvClients.Rows[i].Cells[2].Value = dataDebts[i].lastNames;
                     gvClients.Rows[i].Cells[3].Value = dataDebts[i].address;
                     gvClients.Rows[i].Cells[4].Value = dataDebts[i].amount;
-                    gvClients.Rows[i].Cells[5].Value = "NO Pagada";
+                    gvClients.Rows[i].Cells[5].Value = "No Pagada";
                 }
             }
         }

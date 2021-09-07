@@ -152,6 +152,7 @@
             this.txtNames.Name = "txtNames";
             this.txtNames.Size = new System.Drawing.Size(208, 22);
             this.txtNames.TabIndex = 8;
+            this.txtNames.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNames_KeyPress);
             // 
             // txtPhone
             // 
@@ -159,6 +160,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(208, 22);
             this.txtPhone.TabIndex = 9;
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPhone_KeyPress);
             // 
             // txtAdress
             // 
@@ -166,6 +168,7 @@
             this.txtAdress.Name = "txtAdress";
             this.txtAdress.Size = new System.Drawing.Size(208, 22);
             this.txtAdress.TabIndex = 10;
+            this.txtAdress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtAdress_KeyPress);
             // 
             // txtLastNames
             // 
@@ -173,6 +176,7 @@
             this.txtLastNames.Name = "txtLastNames";
             this.txtLastNames.Size = new System.Drawing.Size(208, 22);
             this.txtLastNames.TabIndex = 11;
+            this.txtLastNames.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtLastNames_KeyPress);
             // 
             // label3
             // 
@@ -213,6 +217,7 @@
             this.txtAmountDebt.Name = "txtAmountDebt";
             this.txtAmountDebt.Size = new System.Drawing.Size(208, 22);
             this.txtAmountDebt.TabIndex = 15;
+            this.txtAmountDebt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtAmountDebt_KeyPress);
             // 
             // txtIdDebt
             // 
@@ -220,6 +225,7 @@
             this.txtIdDebt.Name = "txtIdDebt";
             this.txtIdDebt.Size = new System.Drawing.Size(208, 22);
             this.txtIdDebt.TabIndex = 17;
+            this.txtIdDebt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtIdDebt_KeyPress);
             this.txtIdDebt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtIdDebt_KeyUp);
             // 
             // label6

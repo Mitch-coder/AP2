@@ -213,7 +213,28 @@ namespace AED_AP2
                 }
             }
         }
-        
+
         #endregion
+
+        //
+        private void TxtNames_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidateTextBox.justLetters(e);
+        }
+
+        private void TxtLastNames_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidateTextBox.justLetters(e);
+        }
+
+        private void TxtProjectName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidateTextBox.justLetters(e);
+        }
+
+        private void TxtGrade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidateTextBox.justNumbers(e);
+        }
     }
 }

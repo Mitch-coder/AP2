@@ -83,7 +83,11 @@ namespace AED_AP2
             }
 
         }
-
+        private void RegisterDebts_Load(object sender, EventArgs e)
+        {
+            cbStateDebt.Items.Add("Pagada");
+            cbStateDebt.Items.Add("No pagada");
+        }
         private void RbAll_CheckedChanged(object sender, EventArgs e)
         {
             AuxiliarMethods.FillDataSource(gvClients, dataDebts);
@@ -100,9 +104,10 @@ namespace AED_AP2
         }
         private void TxtIdDebt_KeyUp(object sender, KeyEventArgs e)
         {
-            int index = getIndex();
+           
             try
             {
+                int index = getIndex();
                 if (index >= 0)
                 {
                     double amount = dataDebts[index].amount;
@@ -114,8 +119,10 @@ namespace AED_AP2
                     txtAdress.Text = dataDebts[index].address;
                     txtPhone.Text = dataDebts[index].phone;
                     txtAmountDebt.Text =amount.ToString();
-                    cbStateDebt.Text = dataDebts[index].isPay.ToString();
-
+                    if (dataDebts[index].isPay == true)
+                        cbStateDebt.Text = "Pagada";
+                    else
+                        cbStateDebt.Text = "No pagada";
                 }
                 else
                 {
@@ -159,6 +166,11 @@ namespace AED_AP2
         }
         public void getDataUser(int index)
         {
+            bool aux = false;
+            if (cbStateDebt.Text=="Pagada")
+            {
+                aux = true;
+            }
             dataDebts[index] = new Debt()
             {
                 id = int.Parse(txtIdDebt.Text),
@@ -167,7 +179,7 @@ namespace AED_AP2
                 address = txtAdress.Text,
                 phone = txtPhone.Text,
                 amount = double.Parse(txtAmountDebt.Text),
-                isPay = cbStateDebt.Equals("Pagada")
+                isPay = aux
 
             };
         
@@ -206,18 +218,46 @@ namespace AED_AP2
             txtLastNames.Clear();
             txtAdress.Clear();
             txtPhone.Clear();
-            //cbStateDebtClear();
+            cbStateDebt.Text = string.Empty;
             txtAmountDebt.Clear();
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
             btnCreate.Enabled = true;
         }
+
+        #endregion
+        #region validation field
+        private void TxtIdDebt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidateTextBox.justNumbers(e);
+        }
+
+        private void TxtNames_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidateTextBox.justLetters(e);
+        }
+
+        private void TxtLastNames_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidateTextBox.justLetters(e);
+        }
+
+        private void TxtAdress_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidateTextBox.justLetters(e);
+        }
+
+        private void TxtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidateTextBox.justNumbers(e);
+        }
+
+        private void TxtAmountDebt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidateTextBox.allowDecimals(e);
+        }
         #endregion
 
-        private void RegisterDebts_Load(object sender, EventArgs e)
-        {
-            cbStateDebt.Items.Add("Pagada");
-            cbStateDebt.Items.Add("No pagada");
-        }
+
     }
 }

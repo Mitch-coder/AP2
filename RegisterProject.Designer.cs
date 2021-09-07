@@ -51,8 +51,6 @@
             this.rbLateSent = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
             this.gvStudentProjects = new System.Windows.Forms.DataGridView();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.idStudent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.names = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNames = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,6 +59,8 @@
             this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.projectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvStudentProjects)).BeginInit();
@@ -182,6 +182,7 @@
             this.txtLastNames.Name = "txtLastNames";
             this.txtLastNames.Size = new System.Drawing.Size(175, 22);
             this.txtLastNames.TabIndex = 10;
+            this.txtLastNames.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtLastNames_KeyPress);
             // 
             // txtNames
             // 
@@ -189,6 +190,7 @@
             this.txtNames.Name = "txtNames";
             this.txtNames.Size = new System.Drawing.Size(175, 22);
             this.txtNames.TabIndex = 11;
+            this.txtNames.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNames_KeyPress);
             // 
             // txtDaySent
             // 
@@ -232,6 +234,7 @@
             this.txtProjectName.Name = "txtProjectName";
             this.txtProjectName.Size = new System.Drawing.Size(175, 22);
             this.txtProjectName.TabIndex = 13;
+            this.txtProjectName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtProjectName_KeyPress);
             // 
             // label6
             // 
@@ -250,6 +253,7 @@
             this.txtGrade.Name = "txtGrade";
             this.txtGrade.Size = new System.Drawing.Size(175, 22);
             this.txtGrade.TabIndex = 19;
+            this.txtGrade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtGrade_KeyPress);
             // 
             // label7
             // 
@@ -322,28 +326,6 @@
             this.gvStudentProjects.Size = new System.Drawing.Size(1051, 210);
             this.gvStudentProjects.TabIndex = 23;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label9.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label9.Location = new System.Drawing.Point(851, 27);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(174, 25);
-            this.label9.TabIndex = 24;
-            this.label9.Text = "Datos del proyecto";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label10.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label10.Location = new System.Drawing.Point(238, 27);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(189, 25);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "Datos del estudiante";
-            // 
             // idStudent
             // 
             this.idStudent.HeaderText = "Carnet";
@@ -391,6 +373,28 @@
             this.grade.HeaderText = "Calificacion";
             this.grade.Name = "grade";
             this.grade.ReadOnly = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label9.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label9.Location = new System.Drawing.Point(851, 27);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(174, 25);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "Datos del proyecto";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label10.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label10.Location = new System.Drawing.Point(238, 27);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(189, 25);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Datos del estudiante";
             // 
             // RegisterProject
             // 

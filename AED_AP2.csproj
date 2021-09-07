@@ -81,6 +81,7 @@
       <DependentUpon>RegisterProject.cs</DependentUpon>
     </Compile>
     <Compile Include="Student.cs" />
+    <Compile Include="ValidateTextBox.cs" />
     <EmbeddedResource Include="Developers.resx">
       <DependentUpon>Developers.cs</DependentUpon>
     </EmbeddedResource>
